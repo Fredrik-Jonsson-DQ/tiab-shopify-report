@@ -120,6 +120,43 @@ pre.error-box {
 .action-card { background: rgba(255,255,255,0.04); border-radius: 12px; padding: 14px 16px; }
 .action-card .num { font-size: 28px; font-weight: 800; }
 .action-card .lbl { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* --- Sammanfattning overst: det man kollar forst --- */
+.hero { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 16px; }
+.hero-left { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.hero-when { font-size: 14px; color: var(--muted); }
+.hero-when strong { color: var(--text); font-weight: 600; }
+.hero-stats { display: flex; gap: 34px; flex-wrap: wrap; }
+.hero-stat { text-align: right; }
+.hero-stat .v { font-size: 30px; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; }
+.hero-stat .l { font-size: 12px; color: var(--muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+.pill.lg { font-size: 14px; padding: 7px 16px; }
+
+/* --- Grupperade nyckeltal --- */
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)); gap: 10px; }
+.stat { background: rgba(255,255,255,0.04); border-radius: 12px; padding: 13px 15px; }
+.stat .v { font-size: 23px; font-weight: 800; letter-spacing: -0.01em; }
+.stat .l { font-size: 12px; color: var(--muted); margin-top: 3px; }
+
+/* --- Tabell: siffror hogerstallda, nollor nedtonade --- */
+.zero { color: #54637f; font-weight: 400; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+tbody tr:nth-child(even) td { background: rgba(255,255,255,0.015); }
+thead th { position: sticky; top: 0; background: #16203a; z-index: 1; }
+.table-wrap { max-height: 560px; overflow-y: auto; }
+.col-sep { border-left: 1px solid var(--line); }
+.nowrap { white-space: nowrap; }
+.col-1-2 { display: grid; grid-template-columns: 1fr 2fr; gap: 16px; }
+.action-grid.one { grid-template-columns: 1fr; }
+@media (max-width: 900px) { .col-1-2 { grid-template-columns: 1fr; } }
+
+/* Utan min-width:0 vagrar grid-/flexbarn krympa under sitt innehall, sa den
+   breda historiktabellen tryckte ut hela sidan i mobil i stallet for att
+   scrolla internt. */
+.card, .grid > *, .two-col > *, .col-1-2 > *, .three-col > * { min-width: 0; }
+.header { flex-wrap: wrap; }
+.table-wrap { overflow-x: auto; }
+canvas { max-width: 100%; }
 </style>
 </head>
 <body>
@@ -131,20 +168,55 @@ pre.error-box {
         <h1 class="title">TIAB → Shopify</h1>
         <div class="subtitle">Statistik och historik — inga produktdetaljer visas.</div>
       </div>
-      <div class="badge"><span class="pill ok">Success</span> &nbsp; 2026-06-09 00:00</div>
+      <div class="badge">34 körningar i historiken</div>
     </div>
 
-    <div class="grid metrics">
-      <div class="card"><div class="metric-label">Bearbetade</div><div class="metric-value">5385</div><div class="metric-sub">Limit: alla</div></div>
-      <div class="card"><div class="metric-label">Skapade</div><div class="metric-value" style="color:#23c16b">0</div><div class="metric-sub">Nya produkter</div></div>
-      <div class="card"><div class="metric-label">Uppdaterade</div><div class="metric-value" style="color:#7cb8ff">5385</div><div class="metric-sub">Befintliga produkter</div></div>
-      <div class="card"><div class="metric-label">Arkiverade</div><div class="metric-value" style="color:#f6c24a">0</div><div class="metric-sub">Utgångna från TIAB</div></div>
-      <div class="card"><div class="metric-label">Avarkiverade</div><div class="metric-value" style="color:#c084fc">0</div><div class="metric-sub">Återkomna till TIAB</div></div>
-      <div class="card"><div class="metric-label">Fel</div><div class="metric-value" style="color:#23c16b">0</div><div class="metric-sub">Inga fatala</div></div>
-      <div class="card"><div class="metric-label">Körtid</div><div class="metric-value">100m 53s</div><div class="metric-sub"></div></div>
+    <div class="card hero">
+      <div class="hero-left">
+        <span class="pill lg ok">Success</span>
+        <div class="hero-when">
+          <strong>2026-08-18 00:00</strong>
+          &nbsp;för 1 h sedan
+          
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="v">9439</div>
+          <div class="l">Bearbetade</div>
+        </div>
+        <div class="hero-stat">
+          <div class="v" style="color:#23c16b">0</div>
+          <div class="l">Fel</div>
+        </div>
+        <div class="hero-stat">
+          <div class="v">1h 32m</div>
+          <div class="l">Körtid</div>
+        </div>
+      </div>
     </div>
 
     
+
+    <div class="two-col" style="margin-bottom:16px">
+      <div class="card">
+        <div class="kicker">Senaste körning — produkter</div>
+        <div class="stat-grid">
+          <div class="stat"><div class="v" style="color:#8ff0b6">0</div><div class="l">Skapade</div></div>
+          <div class="stat"><div class="v" style="color:#7cb8ff">5394</div><div class="l">Uppdaterade</div></div>
+          <div class="stat"><div class="v" style="color:#ffe39a">0</div><div class="l">Arkiverade</div></div>
+          <div class="stat"><div class="v" style="color:#d8b4fe">0</div><div class="l">Avarkiverade</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="kicker">Senaste körning — pris och inköp</div>
+        <div class="stat-grid">
+          <div class="stat"><div class="v" style="color:#7cb8ff">0</div><div class="l">Prisändringar</div></div>
+          <div class="stat"><div class="v" style="color:#7cb8ff">0</div><div class="l">Inköpspriser</div></div>
+          <div class="stat"><div class="v" style="color:#ef5b5b">4045</div><div class="l">Säljs under inköp</div></div>
+        </div>
+      </div>
+    </div>
 
     <div class="two-col" style="margin-bottom:16px">
       <div class="card">
@@ -157,11 +229,11 @@ pre.error-box {
       </div>
     </div>
 
-    <div class="two-col" style="margin-bottom:16px">
+    <div class="col-1-2" style="margin-bottom:16px">
       <div class="card">
-        <div class="kicker">Senaste körning — åtgärder</div>
-        <h2 class="section-title">Fördelning</h2>
-        <div class="action-grid"><div class='action-card'><div class='num' style='color:#23c16b'>0</div><div class='lbl'>Skapade</div></div><div class='action-card'><div class='num' style='color:#7cb8ff'>5385</div><div class='lbl'>Uppdaterade</div></div><div class='action-card'><div class='num' style='color:#f6c24a'>0</div><div class='lbl'>Arkiverade</div></div><div class='action-card'><div class='num' style='color:#c084fc'>0</div><div class='lbl'>Avarkiverade</div></div><div class='action-card'><div class='num' style='color:#ef5b5b'>0</div><div class='lbl'>Fel</div></div></div>
+        <div class="kicker">Senaste körning</div>
+        <h2 class="section-title">Övriga åtgärder</h2>
+        <div class="action-grid one"><p class='muted'>Inga åtgärder registrerade.</p></div>
       </div>
       <div class="card">
         <div class="kicker">Senaste körning — fel (0 st)</div>
@@ -175,8 +247,8 @@ pre.error-box {
       <h2 class="section-title">Senaste körningar</h2>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Körning</th><th>Status</th><th>Start</th><th>Bearbetade</th><th>Skapade</th><th>Uppdaterade</th><th>Arkiverade</th><th>Avarkiverade</th><th>Fel</th><th>Tid</th><th>↗</th></tr></thead>
-          <tbody><tr><td><a href='runs/run-20260609T000055+0000.html'>run-20260609T000055+0000</a></td><td><span class="pill ok">Success</span></td><td>2026-06-09 00:00</td><td>5385</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>5385</td><td style='color:#ffe39a'>0</td><td style='color:#d8b4fe'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>100m 53s</td><td></td></tr><tr><td><a href='runs/run-20260608T000054+0000.html'>run-20260608T000054+0000</a></td><td><span class="pill ok">Success</span></td><td>2026-06-08 00:00</td><td>5385</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>5385</td><td style='color:#ffe39a'>0</td><td style='color:#d8b4fe'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>97m 38s</td><td></td></tr><tr><td><a href='runs/run-20260607T000053+0000.html'>run-20260607T000053+0000</a></td><td><span class="pill ok">Success</span></td><td>2026-06-07 00:00</td><td>5385</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>5385</td><td style='color:#ffe39a'>0</td><td style='color:#d8b4fe'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>98m 33s</td><td></td></tr><tr><td><a href='runs/run-20260606T000052+0000.html'>run-20260606T000052+0000</a></td><td><span class="pill ok">Success</span></td><td>2026-06-06 00:00</td><td>5385</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>5385</td><td style='color:#ffe39a'>0</td><td style='color:#d8b4fe'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>98m 35s</td><td></td></tr><tr><td><a href='runs/run-20260605T000051+0000.html'>run-20260605T000051+0000</a></td><td><span class="pill ok">Success</span></td><td>2026-06-05 00:00</td><td>5385</td><td style='color:#8ff0b6'>2</td><td style='color:#7cb8ff'>5383</td><td style='color:#ffe39a'>0</td><td style='color:#d8b4fe'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>98m 52s</td><td></td></tr><tr><td><a href='runs/run-20260604T000051+0000.html'>run-20260604T000051+0000</a></td><td><span class="pill ok">Success</span></td><td>2026-06-04 00:00</td><td>5383</td><td style='color:#8ff0b6'>1</td><td style='color:#7cb8ff'>5382</td><td style='color:#ffe39a'>0</td><td style='color:#d8b4fe'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>98m 57s</td><td></td></tr><tr><td><a href='runs/run-20260603T000050+0000.html'>run-20260603T000050+0000</a></td><td><span class="pill ok">Success</span></td><td>2026-06-03 00:00</td><td>5382</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>5382</td><td style='color:#ffe39a'>0</td><td style='color:#d8b4fe'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>97m 44s</td><td></td></tr><tr><td><a href='runs/run-26815885763.html'>run-26815885763</a></td><td><span class="pill warn">Partial</span></td><td>2026-06-02 11:10</td><td>5382</td><td style='color:#8ff0b6'>36</td><td style='color:#7cb8ff'>5345</td><td style='color:#ffe39a'>0</td><td style='color:#d8b4fe'>0</td><td style='color:#ffc0c0'>1</td><td style='color:#a6b4d0'>106m 1s</td><td><a href="https://github.com/FJonsson-DQ/API-shopify-sync/actions/runs/26815885763">↗</a></td></tr><tr><td><a href='runs/run-26812835300.html'>run-26812835300</a></td><td><span class="pill ok">Success</span></td><td>2026-06-02 10:05</td><td>50</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>50</td><td style='color:#ffe39a'>0</td><td style='color:#d8b4fe'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>3m 5s</td><td><a href="https://github.com/FJonsson-DQ/API-shopify-sync/actions/runs/26812835300">↗</a></td></tr><tr><td><a href='runs/run-26811788845.html'>run-26811788845</a></td><td><span class="pill ok">Success</span></td><td>2026-06-02 09:44</td><td>50</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>50</td><td style='color:#ffe39a'>0</td><td style='color:#d8b4fe'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>3m 6s</td><td><a href="https://github.com/FJonsson-DQ/API-shopify-sync/actions/runs/26811788845">↗</a></td></tr><tr><td><a href='runs/run-20260520T130522+0000.html'>run-20260520T130522+0000</a></td><td><span class="pill ok">Success</span></td><td>2026-05-20 13:05</td><td>5346</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>5346</td><td style='color:#ffe39a'>0</td><td style='color:#d8b4fe'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>96m 47s</td><td></td></tr><tr><td><a href='runs/run-20260520T073929+0000.html'>run-20260520T073929+0000</a></td><td><span class="pill warn">Partial</span></td><td>2026-05-20 07:39</td><td>5346</td><td style='color:#8ff0b6'>6</td><td style='color:#7cb8ff'>5337</td><td style='color:#ffe39a'>0</td><td style='color:#d8b4fe'>0</td><td style='color:#ffc0c0'>3</td><td style='color:#a6b4d0'>112m 57s</td><td></td></tr><tr><td><a href='runs/run-20260511T134038+0000.html'>run-20260511T134038+0000</a></td><td><span class="pill ok">Success</span></td><td>2026-05-11 13:40</td><td>5340</td><td style='color:#8ff0b6'>2</td><td style='color:#7cb8ff'>5338</td><td style='color:#ffe39a'>0</td><td style='color:#d8b4fe'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>104m 24s</td><td></td></tr><tr><td><a href='runs/run-25047159141.html'>run-25047159141</a></td><td><span class="pill warn">Partial</span></td><td>2026-04-28 10:16</td><td>5332</td><td style='color:#8ff0b6'>11</td><td style='color:#7cb8ff'>5320</td><td style='color:#ffe39a'>0</td><td style='color:#d8b4fe'>0</td><td style='color:#ffc0c0'>1</td><td style='color:#a6b4d0'>311m 17s</td><td><a href="https://github.com/FJonsson-DQ/API-shopify-sync/actions/runs/25047159141">↗</a></td></tr><tr><td><a href='runs/run-25039455818.html'>run-25039455818</a></td><td><span class="pill ok">Success</span></td><td>2026-04-28 07:19</td><td>1</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>1</td><td style='color:#ffe39a'>0</td><td style='color:#d8b4fe'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>31s</td><td><a href="https://github.com/FJonsson-DQ/API-shopify-sync/actions/runs/25039455818">↗</a></td></tr><tr><td><a href='runs/run-25039073818.html'>run-25039073818</a></td><td><span class="pill ok">Success</span></td><td>2026-04-28 07:10</td><td>1</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>1</td><td style='color:#ffe39a'>0</td><td style='color:#d8b4fe'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>3m 53s</td><td><a href="https://github.com/FJonsson-DQ/API-shopify-sync/actions/runs/25039073818">↗</a></td></tr><tr><td><a href='runs/run-23835062852.html'>run-23835062852</a></td><td><span class="pill ok">Success</span></td><td>2026-04-01 06:23</td><td>1421</td><td style='color:#8ff0b6'>1420</td><td style='color:#7cb8ff'>1</td><td style='color:#ffe39a'>0</td><td style='color:#d8b4fe'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>90m 50s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23835062852">↗</a></td></tr><tr><td><a href='runs/run-23746206882.html'>run-23746206882</a></td><td><span class="pill ok">Success</span></td><td>2026-03-30 13:05</td><td>110</td><td style='color:#8ff0b6'>60</td><td style='color:#7cb8ff'>50</td><td style='color:#ffe39a'>0</td><td style='color:#d8b4fe'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>19m 26s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23746206882">↗</a></td></tr><tr><td><a href='runs/run-23743354831.html'>run-23743354831</a></td><td><span class="pill ok">Success</span></td><td>2026-03-30 11:53</td><td>55</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>55</td><td style='color:#ffe39a'>0</td><td style='color:#d8b4fe'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>9m 1s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23743354831">↗</a></td></tr><tr><td><a href='runs/run-23743149753.html'>run-23743149753</a></td><td><span class="pill ok">Success</span></td><td>2026-03-30 11:48</td><td>1</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>1</td><td style='color:#ffe39a'>0</td><td style='color:#d8b4fe'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>26s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23743149753">↗</a></td></tr><tr><td><a href='runs/run-23742320685.html'>run-23742320685</a></td><td><span class="pill ok">Success</span></td><td>2026-03-30 11:26</td><td>1</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>1</td><td style='color:#ffe39a'>0</td><td style='color:#d8b4fe'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>22s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23742320685">↗</a></td></tr><tr><td><a href='runs/run-23741637950.html'>run-23741637950</a></td><td><span class="pill ok">Success</span></td><td>2026-03-30 11:07</td><td>50</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>50</td><td style='color:#ffe39a'>0</td><td style='color:#d8b4fe'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>8m 11s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23741637950">↗</a></td></tr><tr><td><a href='runs/run-23740620333.html'>run-23740620333</a></td><td><span class="pill ok">Success</span></td><td>2026-03-30 10:40</td><td>50</td><td style='color:#8ff0b6'>50</td><td style='color:#7cb8ff'>0</td><td style='color:#ffe39a'>0</td><td style='color:#d8b4fe'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>7m 58s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23740620333">↗</a></td></tr><tr><td><a href='runs/run-23736959968.html'>run-23736959968</a></td><td><span class="pill ok">Success</span></td><td>2026-03-30 09:10</td><td>50</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>50</td><td style='color:#ffe39a'>0</td><td style='color:#d8b4fe'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>8m 3s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23736959968">↗</a></td></tr><tr><td><a href='runs/run-23735501471.html'>run-23735501471</a></td><td><span class="pill ok">Success</span></td><td>2026-03-30 08:34</td><td>10</td><td style='color:#8ff0b6'>0</td><td style='color:#7cb8ff'>10</td><td style='color:#ffe39a'>0</td><td style='color:#d8b4fe'>0</td><td style='color:#ffc0c0'>0</td><td style='color:#a6b4d0'>1m 58s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23735501471">↗</a></td></tr></tbody>
+          <thead><tr><th>Körning</th><th>Status</th><th class="num">Bearbetade</th><th class="num col-sep">Skapade</th><th class="num">Uppdaterade</th><th class="num">Arkiverade</th><th class="num">Avarkiverade</th><th class="num col-sep">Priser</th><th class="num">Inköpspriser</th><th class="num">Under inköp</th><th class="num col-sep">Fel</th><th class="num">Tid</th><th>↗</th></tr></thead>
+          <tbody><tr><td class='nowrap'><a href='runs/run-20260818T000040+0000.html'>2026-08-18 00:00</a></td><td><span class="pill ok">Success</span></td><td class='num'>9439</td><td class='num col-sep'><span class='zero'>0</span></td><td class='num' style='color:#7cb8ff'>5394</td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num' style='color:#ffc0c0'>4045</td><td class='num col-sep'><span class='zero'>0</span></td><td class='num muted nowrap'>1h 32m</td><td></td></tr><tr><td class='nowrap'><a href='runs/run-20260609T000055+0000.html'>2026-06-09 00:00</a></td><td><span class="pill ok">Success</span></td><td class='num'>5385</td><td class='num col-sep'><span class='zero'>0</span></td><td class='num' style='color:#7cb8ff'>5385</td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num muted nowrap'>1h 40m</td><td></td></tr><tr><td class='nowrap'><a href='runs/run-20260608T000054+0000.html'>2026-06-08 00:00</a></td><td><span class="pill ok">Success</span></td><td class='num'>5385</td><td class='num col-sep'><span class='zero'>0</span></td><td class='num' style='color:#7cb8ff'>5385</td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num muted nowrap'>1h 37m</td><td></td></tr><tr><td class='nowrap'><a href='runs/run-20260607T000053+0000.html'>2026-06-07 00:00</a></td><td><span class="pill ok">Success</span></td><td class='num'>5385</td><td class='num col-sep'><span class='zero'>0</span></td><td class='num' style='color:#7cb8ff'>5385</td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num muted nowrap'>1h 38m</td><td></td></tr><tr><td class='nowrap'><a href='runs/run-20260606T000052+0000.html'>2026-06-06 00:00</a></td><td><span class="pill ok">Success</span></td><td class='num'>5385</td><td class='num col-sep'><span class='zero'>0</span></td><td class='num' style='color:#7cb8ff'>5385</td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num muted nowrap'>1h 38m</td><td></td></tr><tr><td class='nowrap'><a href='runs/run-20260605T000051+0000.html'>2026-06-05 00:00</a></td><td><span class="pill ok">Success</span></td><td class='num'>5385</td><td class='num col-sep' style='color:#8ff0b6'>2</td><td class='num' style='color:#7cb8ff'>5383</td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num muted nowrap'>1h 38m</td><td></td></tr><tr><td class='nowrap'><a href='runs/run-20260604T000051+0000.html'>2026-06-04 00:00</a></td><td><span class="pill ok">Success</span></td><td class='num'>5383</td><td class='num col-sep' style='color:#8ff0b6'>1</td><td class='num' style='color:#7cb8ff'>5382</td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num muted nowrap'>1h 38m</td><td></td></tr><tr><td class='nowrap'><a href='runs/run-20260603T000050+0000.html'>2026-06-03 00:00</a></td><td><span class="pill ok">Success</span></td><td class='num'>5382</td><td class='num col-sep'><span class='zero'>0</span></td><td class='num' style='color:#7cb8ff'>5382</td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num muted nowrap'>1h 37m</td><td></td></tr><tr><td class='nowrap'><a href='runs/run-26815885763.html'>2026-06-02 11:10</a></td><td><span class="pill warn">Partial</span></td><td class='num'>5382</td><td class='num col-sep' style='color:#8ff0b6'>36</td><td class='num' style='color:#7cb8ff'>5345</td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep' style='color:#ffc0c0'>1</td><td class='num muted nowrap'>1h 46m</td><td><a href="https://github.com/FJonsson-DQ/API-shopify-sync/actions/runs/26815885763">↗</a></td></tr><tr><td class='nowrap'><a href='runs/run-26812835300.html'>2026-06-02 10:05</a></td><td><span class="pill ok">Success</span></td><td class='num'>50</td><td class='num col-sep'><span class='zero'>0</span></td><td class='num' style='color:#7cb8ff'>50</td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num muted nowrap'>3m 5s</td><td><a href="https://github.com/FJonsson-DQ/API-shopify-sync/actions/runs/26812835300">↗</a></td></tr><tr><td class='nowrap'><a href='runs/run-26811788845.html'>2026-06-02 09:44</a></td><td><span class="pill ok">Success</span></td><td class='num'>50</td><td class='num col-sep'><span class='zero'>0</span></td><td class='num' style='color:#7cb8ff'>50</td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num muted nowrap'>3m 6s</td><td><a href="https://github.com/FJonsson-DQ/API-shopify-sync/actions/runs/26811788845">↗</a></td></tr><tr><td class='nowrap'><a href='runs/run-20260520T130522+0000.html'>2026-05-20 13:05</a></td><td><span class="pill ok">Success</span></td><td class='num'>5346</td><td class='num col-sep'><span class='zero'>0</span></td><td class='num' style='color:#7cb8ff'>5346</td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num muted nowrap'>1h 36m</td><td></td></tr><tr><td class='nowrap'><a href='runs/run-20260520T073929+0000.html'>2026-05-20 07:39</a></td><td><span class="pill warn">Partial</span></td><td class='num'>5346</td><td class='num col-sep' style='color:#8ff0b6'>6</td><td class='num' style='color:#7cb8ff'>5337</td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep' style='color:#ffc0c0'>3</td><td class='num muted nowrap'>1h 52m</td><td></td></tr><tr><td class='nowrap'><a href='runs/run-20260511T134038+0000.html'>2026-05-11 13:40</a></td><td><span class="pill ok">Success</span></td><td class='num'>5340</td><td class='num col-sep' style='color:#8ff0b6'>2</td><td class='num' style='color:#7cb8ff'>5338</td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num muted nowrap'>1h 44m</td><td></td></tr><tr><td class='nowrap'><a href='runs/run-25047159141.html'>2026-04-28 10:16</a></td><td><span class="pill warn">Partial</span></td><td class='num'>5332</td><td class='num col-sep' style='color:#8ff0b6'>11</td><td class='num' style='color:#7cb8ff'>5320</td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep' style='color:#ffc0c0'>1</td><td class='num muted nowrap'>5h 11m</td><td><a href="https://github.com/FJonsson-DQ/API-shopify-sync/actions/runs/25047159141">↗</a></td></tr><tr><td class='nowrap'><a href='runs/run-25039455818.html'>2026-04-28 07:19</a></td><td><span class="pill ok">Success</span></td><td class='num'>1</td><td class='num col-sep'><span class='zero'>0</span></td><td class='num' style='color:#7cb8ff'>1</td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num muted nowrap'>31s</td><td><a href="https://github.com/FJonsson-DQ/API-shopify-sync/actions/runs/25039455818">↗</a></td></tr><tr><td class='nowrap'><a href='runs/run-25039073818.html'>2026-04-28 07:10</a></td><td><span class="pill ok">Success</span></td><td class='num'>1</td><td class='num col-sep'><span class='zero'>0</span></td><td class='num' style='color:#7cb8ff'>1</td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num muted nowrap'>3m 53s</td><td><a href="https://github.com/FJonsson-DQ/API-shopify-sync/actions/runs/25039073818">↗</a></td></tr><tr><td class='nowrap'><a href='runs/run-23835062852.html'>2026-04-01 06:23</a></td><td><span class="pill ok">Success</span></td><td class='num'>1421</td><td class='num col-sep' style='color:#8ff0b6'>1420</td><td class='num' style='color:#7cb8ff'>1</td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num muted nowrap'>1h 30m</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23835062852">↗</a></td></tr><tr><td class='nowrap'><a href='runs/run-23746206882.html'>2026-03-30 13:05</a></td><td><span class="pill ok">Success</span></td><td class='num'>110</td><td class='num col-sep' style='color:#8ff0b6'>60</td><td class='num' style='color:#7cb8ff'>50</td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num muted nowrap'>19m 26s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23746206882">↗</a></td></tr><tr><td class='nowrap'><a href='runs/run-23743354831.html'>2026-03-30 11:53</a></td><td><span class="pill ok">Success</span></td><td class='num'>55</td><td class='num col-sep'><span class='zero'>0</span></td><td class='num' style='color:#7cb8ff'>55</td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num muted nowrap'>9m 1s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23743354831">↗</a></td></tr><tr><td class='nowrap'><a href='runs/run-23743149753.html'>2026-03-30 11:48</a></td><td><span class="pill ok">Success</span></td><td class='num'>1</td><td class='num col-sep'><span class='zero'>0</span></td><td class='num' style='color:#7cb8ff'>1</td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num muted nowrap'>26s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23743149753">↗</a></td></tr><tr><td class='nowrap'><a href='runs/run-23742320685.html'>2026-03-30 11:26</a></td><td><span class="pill ok">Success</span></td><td class='num'>1</td><td class='num col-sep'><span class='zero'>0</span></td><td class='num' style='color:#7cb8ff'>1</td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num muted nowrap'>22s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23742320685">↗</a></td></tr><tr><td class='nowrap'><a href='runs/run-23741637950.html'>2026-03-30 11:07</a></td><td><span class="pill ok">Success</span></td><td class='num'>50</td><td class='num col-sep'><span class='zero'>0</span></td><td class='num' style='color:#7cb8ff'>50</td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num muted nowrap'>8m 11s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23741637950">↗</a></td></tr><tr><td class='nowrap'><a href='runs/run-23740620333.html'>2026-03-30 10:40</a></td><td><span class="pill ok">Success</span></td><td class='num'>50</td><td class='num col-sep' style='color:#8ff0b6'>50</td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num muted nowrap'>7m 58s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23740620333">↗</a></td></tr><tr><td class='nowrap'><a href='runs/run-23736959968.html'>2026-03-30 09:10</a></td><td><span class="pill ok">Success</span></td><td class='num'>50</td><td class='num col-sep'><span class='zero'>0</span></td><td class='num' style='color:#7cb8ff'>50</td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num'><span class='zero'>0</span></td><td class='num col-sep'><span class='zero'>0</span></td><td class='num muted nowrap'>8m 3s</td><td><a href="https://github.com/Adrenalix/tiab-shopify-sync/actions/runs/23736959968">↗</a></td></tr></tbody>
         </table>
       </div>
     </div>
@@ -187,43 +259,62 @@ pre.error-box {
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <script>
 (function() {
-  const labels = ["2026-03-30 08:34", "2026-03-30 09:10", "2026-03-30 10:40", "2026-03-30 11:07", "2026-03-30 11:26", "2026-03-30 11:48", "2026-03-30 11:53", "2026-03-30 13:05", "2026-04-01 06:23", "2026-04-28 07:10", "2026-04-28 07:19", "2026-04-28 10:16", "2026-05-11 13:40", "2026-05-20 07:39", "2026-05-20 13:05", "2026-06-02 09:44", "2026-06-02 10:05", "2026-06-02 11:10", "2026-06-03 00:00", "2026-06-04 00:00", "2026-06-05 00:00", "2026-06-06 00:00", "2026-06-07 00:00", "2026-06-08 00:00", "2026-06-09 00:00"];
-  const cfg = (label, data, color) => ({
-    label, data,
+  const labels = ["2026-03-30 09:10", "2026-03-30 10:40", "2026-03-30 11:07", "2026-03-30 11:26", "2026-03-30 11:48", "2026-03-30 11:53", "2026-03-30 13:05", "2026-04-01 06:23", "2026-04-28 07:10", "2026-04-28 07:19", "2026-04-28 10:16", "2026-05-11 13:40", "2026-05-20 07:39", "2026-05-20 13:05", "2026-06-02 09:44", "2026-06-02 10:05", "2026-06-02 11:10", "2026-06-03 00:00", "2026-06-04 00:00", "2026-06-05 00:00", "2026-06-06 00:00", "2026-06-07 00:00", "2026-06-08 00:00", "2026-06-09 00:00", "2026-08-18 00:00"];
+  const MUTED = '#a6b4d0', GRID = 'rgba(42,58,94,0.55)';
+  const line = (label, data, color, axis) => ({
+    label, data, yAxisID: axis || 'y',
     borderColor: color, backgroundColor: color + '33',
-    borderWidth: 2, pointRadius: 3, tension: 0.3, fill: false,
+    borderWidth: 2, pointRadius: 2, pointHoverRadius: 5, tension: 0.3, fill: false,
   });
+  const baseOpts = {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { labels: { color: MUTED, font: { size: 12 }, boxWidth: 12, usePointStyle: true, pointStyle: 'line' } },
+      tooltip: { backgroundColor: '#16203a', borderColor: '#2a3a5e', borderWidth: 1, padding: 10 },
+    },
+    scales: {
+      x: { ticks: { color: MUTED, maxRotation: 0, autoSkipPadding: 16 }, grid: { display: false } },
+      y: { ticks: { color: MUTED }, grid: { color: GRID }, beginAtZero: true },
+    },
+  };
+
+  // Fel far egen axel till hoger — annars drunknar 0-3 fel bland tusentals uppdateringar
   new Chart(document.getElementById('trendChart'), {
     type: 'line',
     data: { labels, datasets: [
-      cfg('Skapade',      [0, 0, 50, 0, 0, 0, 0, 60, 1420, 0, 0, 11, 2, 6, 0, 0, 0, 36, 0, 1, 2, 0, 0, 0, 0],    '#23c16b'),
-      cfg('Uppdaterade',  [10, 50, 0, 50, 1, 1, 55, 50, 1, 1, 1, 5320, 5338, 5337, 5346, 50, 50, 5345, 5382, 5382, 5383, 5385, 5385, 5385, 5385],    '#7cb8ff'),
-      cfg('Arkiverade',   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],   '#f6c24a'),
-      cfg('Avarkiverade', [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], '#c084fc'),
-      cfg('Fel',          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 3, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],     '#ef5b5b'),
+      line('Skapade',      [0, 50, 0, 0, 0, 0, 60, 1420, 0, 0, 11, 2, 6, 0, 0, 0, 36, 0, 1, 2, 0, 0, 0, 0, 0],    '#23c16b'),
+      line('Uppdaterade',  [50, 0, 50, 1, 1, 55, 50, 1, 1, 1, 5320, 5338, 5337, 5346, 50, 50, 5345, 5382, 5382, 5383, 5385, 5385, 5385, 5385, 5394],    '#7cb8ff'),
+      line('Arkiverade',   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],   '#f6c24a'),
+      line('Avarkiverade', [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], '#c084fc'),
+      line('Fel (höger axel)', [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 3, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0], '#ef5b5b', 'yErr'),
     ]},
     options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { labels: { color: '#a6b4d0', font: { size: 12 } } } },
+      ...baseOpts,
       scales: {
-        x: { ticks: { color: '#a6b4d0', maxRotation: 45 }, grid: { color: '#2a3a5e' } },
-        y: { ticks: { color: '#a6b4d0' }, grid: { color: '#2a3a5e' }, beginAtZero: true },
+        ...baseOpts.scales,
+        yErr: {
+          position: 'right', beginAtZero: true,
+          ticks: { color: '#ef5b5b', precision: 0 },
+          grid: { drawOnChartArea: false },
+        },
       },
     },
   });
+
   new Chart(document.getElementById('durationChart'), {
     type: 'bar',
     data: { labels, datasets: [{
-      label: 'Körtid (s)', data: [118, 483, 478, 491, 22, 26, 541, 1166, 5450, 233, 31, 18677, 6264, 6777, 5807, 186, 185, 6361, 5864, 5937, 5932, 5915, 5913, 5858, 6053],
+      label: 'Körtid (minuter)', data: [8.1, 8.0, 8.2, 0.4, 0.4, 9.0, 19.4, 90.8, 3.9, 0.5, 311.3, 104.4, 113.0, 96.8, 3.1, 3.1, 106.0, 97.7, 99.0, 98.9, 98.6, 98.5, 97.6, 100.9, 92.7],
       backgroundColor: '#7cb8ff55', borderColor: '#7cb8ff',
-      borderWidth: 1, borderRadius: 4,
+      borderWidth: 1, borderRadius: 4, maxBarThickness: 26,
     }]},
     options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { labels: { color: '#a6b4d0', font: { size: 12 } } } },
-      scales: {
-        x: { ticks: { color: '#a6b4d0', maxRotation: 45 }, grid: { color: '#2a3a5e' } },
-        y: { ticks: { color: '#a6b4d0' }, grid: { color: '#2a3a5e' }, beginAtZero: true },
+      ...baseOpts,
+      plugins: {
+        ...baseOpts.plugins,
+        tooltip: { ...baseOpts.plugins.tooltip,
+          callbacks: { label: (c) => c.parsed.y + ' min' } },
       },
     },
   });
