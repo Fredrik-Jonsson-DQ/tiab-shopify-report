@@ -22,15 +22,7 @@
     "status": "success",
     "fatal_error": ""
   },
-  "records": [
-    {
-      "timestamp": "2026-03-30T11:48:28+00:00",
-      "sku": "1012-14105",
-      "title": " KULKOPPLING UNI 1700 KG",
-      "action": "updated",
-      "shopify_id": "10599343980877",
-      "status": "ok",
-      "error": ""
-    }
-  ]
+  "actions": {
+    "updated": 1
+  }
 }

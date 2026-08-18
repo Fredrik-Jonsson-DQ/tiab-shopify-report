@@ -22,51 +22,7 @@
     "status": "failed",
     "fatal_error": ""
   },
-  "records": [
-    {
-      "timestamp": "2026-03-27T14:53:18+00:00",
-      "sku": "1012-14105",
-      "title": " KULKOPPLING UNI 1700 KG",
-      "action": "error",
-      "shopify_id": "",
-      "status": "failed",
-      "error": "name 'sku_cache' is not defined"
-    },
-    {
-      "timestamp": "2026-03-27T14:53:18+00:00",
-      "sku": "1335-15778",
-      "title": " LAGERSATS",
-      "action": "error",
-      "shopify_id": "",
-      "status": "failed",
-      "error": "name 'sku_cache' is not defined"
-    },
-    {
-      "timestamp": "2026-03-27T14:53:18+00:00",
-      "sku": "1401-14713",
-      "title": " MONTERINGSRAM JOKON MODELL 735B CHROME",
-      "action": "error",
-      "shopify_id": "",
-      "status": "failed",
-      "error": "name 'sku_cache' is not defined"
-    },
-    {
-      "timestamp": "2026-03-27T14:53:18+00:00",
-      "sku": "1208-15471",
-      "title": " SKYLTLYKTA LED FRISTOM BLISTER",
-      "action": "error",
-      "shopify_id": "",
-      "status": "failed",
-      "error": "name 'sku_cache' is not defined"
-    },
-    {
-      "timestamp": "2026-03-27T14:53:19+00:00",
-      "sku": "1221-14282",
-      "title": " VEV TILL VINCH",
-      "action": "error",
-      "shopify_id": "",
-      "status": "failed",
-      "error": "name 'sku_cache' is not defined"
-    }
-  ]
+  "actions": {
+    "error": 5
+  }
 }

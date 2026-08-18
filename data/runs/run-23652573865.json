@@ -22,51 +22,8 @@
     "status": "success",
     "fatal_error": ""
   },
-  "records": [
-    {
-      "timestamp": "2026-03-27T14:58:30+00:00",
-      "sku": "1012-14105",
-      "title": " KULKOPPLING UNI 1700 KG",
-      "action": "created",
-      "shopify_id": "10595309224269",
-      "status": "ok",
-      "error": ""
-    },
-    {
-      "timestamp": "2026-03-27T14:58:37+00:00",
-      "sku": "1335-15778",
-      "title": " LAGERSATS",
-      "action": "created",
-      "shopify_id": "10595332849997",
-      "status": "ok",
-      "error": ""
-    },
-    {
-      "timestamp": "2026-03-27T14:58:45+00:00",
-      "sku": "1401-14713",
-      "title": " MONTERINGSRAM JOKON MODELL 735B CHROME",
-      "action": "created",
-      "shopify_id": "10595343532365",
-      "status": "ok",
-      "error": ""
-    },
-    {
-      "timestamp": "2026-03-27T14:58:58+00:00",
-      "sku": "1208-15471",
-      "title": " SKYLTLYKTA LED FRISTOM BLISTER",
-      "action": "created",
-      "shopify_id": "10595355197773",
-      "status": "ok",
-      "error": ""
-    },
-    {
-      "timestamp": "2026-03-27T14:59:07+00:00",
-      "sku": "1221-14282",
-      "title": " VEV TILL VINCH",
-      "action": "updated",
-      "shopify_id": "10594761769293",
-      "status": "ok",
-      "error": ""
-    }
-  ]
+  "actions": {
+    "created": 4,
+    "updated": 1
+  }
 }
