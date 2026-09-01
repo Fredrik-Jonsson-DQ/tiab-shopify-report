@@ -1,23 +1,26 @@
 {
-  "kind": "orders",
-  "started_at": "2026-09-01T23:00:38+00:00",
-  "duration_seconds": 0.2,
+  "kind": "products",
+  "started_at": "2026-09-01T23:00:43+00:00",
+  "duration_seconds": 7.9,
   "status": "ok",
   "fatal_error": null,
   "legs": {
-    "orders": {
-      "fetched": 0,
-      "synced": 0,
-      "skipped": 0,
-      "skipped_makulerad": 0,
-      "skipped_test": 0,
-      "skipped_tomma": 0,
-      "behover_manuell": 0,
-      "vantar": 0,
-      "vantar_lange": 0,
-      "upplosta": 0,
-      "redan_i_verendus": 0,
-      "reservrader": 0,
+    "products": {
+      "processed": 0,
+      "uppdaterade": 0,
+      "saknas_i_butiken": 0,
+      "skipped_utan_artikelnummer": 0,
+      "overtagna": 0,
+      "artikelbrygga": 0,
+      "skapade_utkast": 0,
+      "utkast_undantagna": 0,
+      "lager_ej_styrt": 0,
+      "dubbletter_i_verendus": 0,
+      "dubbletter_kompletterade": 0,
+      "lager_pa_frammande": 0,
+      "rensat_jamforelsepris": 0,
+      "utgangna": 0,
+      "aterstallda": 0,
       "errors": 0
     }
   }
