@@ -148,6 +148,15 @@ thead th { position: sticky; top: 0; background: #16203a; z-index: 1; }
 .nowrap { white-space: nowrap; }
 .col-1-2 { display: grid; grid-template-columns: 1fr 2fr; gap: 16px; }
 .action-grid.one { grid-template-columns: 1fr; }
+/* --- Flikar mellan de tva synkrapporterna i samma repo --- */
+.tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+.tab {
+  display: inline-flex; align-items: center; padding: 9px 18px; border-radius: 999px;
+  border: 1px solid var(--line); background: rgba(255,255,255,0.03);
+  color: var(--muted); font-size: 14px; font-weight: 600; text-decoration: none;
+}
+.tab:hover { color: var(--text); background: rgba(255,255,255,0.06); text-decoration: none; }
+.tab.active { background: var(--panel-2); color: var(--text); border-color: #3a5080; }
 @media (max-width: 900px) { .col-1-2 { grid-template-columns: 1fr; } }
 
 /* Utan min-width:0 vagrar grid-/flexbarn krympa under sitt innehall, sa den
@@ -161,6 +170,11 @@ canvas { max-width: 100%; }
 </head>
 <body>
   <div class="container">
+
+<nav class="tabs">
+      <a class="tab active" href="./">TIAB → Shopify</a>
+      <a class="tab" href="verendus/">Verendus → Shopify</a>
+    </nav>
 
     <div class="header">
       <div>
