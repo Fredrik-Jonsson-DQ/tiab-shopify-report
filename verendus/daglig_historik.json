@@ -258,7 +258,8 @@
     "2026-09-03T11:30:37+00:00",
     "2026-09-03T11:30:40+00:00",
     "2026-09-03T11:45:37+00:00",
-    "2026-09-03T12:00:37+00:00"
+    "2026-09-03T12:00:37+00:00",
+    "2026-09-03T12:00:40+00:00"
    ],
    "orders": {
     "korningar": 57,
@@ -269,15 +270,15 @@
     "errors": 0
    },
    "products": {
-    "korningar": 28,
-    "uppdaterade": 12,
-    "saknas_i_butiken": 175,
+    "korningar": 29,
+    "uppdaterade": 17,
+    "saknas_i_butiken": 212,
     "skapade_utkast": 0,
     "lager_pa_frammande": 132,
-    "dubbletter_i_verendus": 2,
+    "dubbletter_i_verendus": 3,
     "errors": 0
    }
   }
  },
- "uppdaterad": "2026-09-03T12:00:38+00:00"
+ "uppdaterad": "2026-09-03T12:01:03+00:00"
 }
