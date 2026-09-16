@@ -484,10 +484,12 @@
     "2026-09-16T11:45:48+00:00",
     "2026-09-16T12:00:49+00:00",
     "2026-09-16T12:15:49+00:00",
-    "2026-09-16T12:30:48+00:00"
+    "2026-09-16T12:30:48+00:00",
+    "2026-09-16T12:30:50+00:00",
+    "2026-09-16T12:45:49+00:00"
    ],
    "orders": {
-    "korningar": 59,
+    "korningar": 60,
     "fetched": 0,
     "synced": 0,
     "behover_manuell": 0,
@@ -495,8 +497,8 @@
     "vantar": 0
    },
    "products": {
-    "korningar": 14,
-    "uppdaterade": 16,
+    "korningar": 15,
+    "uppdaterade": 21,
     "skapade_utkast": 0,
     "lager_pa_frammande": 0,
     "errors": 0,
@@ -505,6 +507,6 @@
    }
   }
  },
- "uppdaterad": "2026-09-16T12:30:48+00:00",
+ "uppdaterad": "2026-09-16T12:45:49+00:00",
  "version": 2
 }
