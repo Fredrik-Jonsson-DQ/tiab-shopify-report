@@ -1,7 +1,7 @@
 {
   "kind": "orders",
-  "started_at": "2026-10-08T16:02:03+00:00",
-  "duration_seconds": 5.1,
+  "started_at": "2026-10-08T18:01:35+00:00",
+  "duration_seconds": 22.5,
   "status": "ok",
   "fatal_error": null,
   "legs": {
