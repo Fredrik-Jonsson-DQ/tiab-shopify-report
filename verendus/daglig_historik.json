@@ -1023,10 +1023,17 @@
     "2026-10-14T04:30:10+00:00",
     "2026-10-14T04:30:17+00:00",
     "2026-10-14T04:45:10+00:00",
-    "2026-10-14T05:00:16+00:00"
+    "2026-10-14T05:00:16+00:00",
+    "2026-10-14T05:00:25+00:00",
+    "2026-10-14T05:15:10+00:00",
+    "2026-10-14T05:30:10+00:00",
+    "2026-10-14T05:30:17+00:00",
+    "2026-10-14T05:45:10+00:00",
+    "2026-10-14T02:05:09+00:00",
+    "2026-10-14T06:00:12+00:00"
    ],
    "orders": {
-    "korningar": 29,
+    "korningar": 33,
     "fetched": 0,
     "synced": 0,
     "behover_manuell": 0,
@@ -1034,17 +1041,17 @@
     "vantar": 0
    },
    "products": {
-    "korningar": 13,
-    "uppdaterade": 0,
+    "korningar": 16,
+    "uppdaterade": 8328,
     "skapade_utkast": 0,
-    "lager_pa_frammande": 0,
+    "lager_pa_frammande": 93,
     "errors": 0,
-    "saknas_i_butiken": 0,
-    "dubbletter_i_verendus": 0,
+    "saknas_i_butiken": 11052,
+    "dubbletter_i_verendus": 2,
     "overhoppad_las": 4
    }
   }
  },
- "uppdaterad": "2026-10-14T05:00:16+00:00",
+ "uppdaterad": "2026-10-14T06:00:12+00:00",
  "version": 2
 }
