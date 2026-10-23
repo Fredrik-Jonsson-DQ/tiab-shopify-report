@@ -1194,18 +1194,36 @@
   },
   "2026-10-24": {
    "_sedda": [
-    "2026-10-23T22:00:22+00:00"
+    "2026-10-23T22:00:22+00:00",
+    "2026-10-23T22:00:24+00:00",
+    "2026-10-23T22:15:22+00:00",
+    "2026-10-23T22:30:21+00:00",
+    "2026-10-23T22:30:24+00:00",
+    "2026-10-23T22:45:21+00:00",
+    "2026-10-23T23:00:23+00:00"
    ],
    "orders": {
-    "korningar": 1,
+    "korningar": 5,
     "fetched": 1,
     "synced": 0,
     "behover_manuell": 0,
     "errors": 0,
     "vantar": 0
+   },
+   "products": {
+    "korningar": 2,
+    "uppdaterade": 2,
+    "unchanged": 134,
+    "skapade_utkast": 0,
+    "lager_pa_frammande": 1,
+    "errors": 0,
+    "variant_index_failed": 0,
+    "saknas_i_butiken": 14,
+    "dubbletter_i_verendus": 0,
+    "campaign_price": 0
    }
   }
  },
- "uppdaterad": "2026-10-23T22:00:23+00:00",
+ "uppdaterad": "2026-10-23T23:00:23+00:00",
  "version": 2
 }
